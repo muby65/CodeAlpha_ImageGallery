@@ -74,6 +74,76 @@ main {
   padding-bottom: 4rem;
 }
 
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font: inherit;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+
+.filter-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Must come after :hover so the active filter keeps its colour */
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Gallery (masonry) ---------- */
+.gallery {
+  columns: 3;
+  column-gap: var(--gap);
+}
+
+.gallery__item {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--gap);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+  cursor: zoom-in;
+  break-inside: avoid;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery__item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+}
+
+.gallery__item:hover,
+.gallery__item:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(28, 27, 25, 0.18);
+}
+
+.gallery__item:hover img,
+.gallery__item:focus-visible img {
+  transform: scale(1.06);
+}
+
 /* ---------- Respect users who prefer less motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   * {
