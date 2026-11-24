@@ -58,7 +58,10 @@
 
   <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
   <button class="lightbox__close" id="lightbox-close" aria-label="Close image viewer">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">&#8592;</button>
   <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+  <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">&#8594;</button>
+  <p class="lightbox__counter" id="lightbox-counter" aria-live="polite"></p>
   </dialog>
 
   <script src="js/script.js" defer></script>
