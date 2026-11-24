@@ -1,0 +1,52 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --text: #e8eaf0;
+  --muted: #9aa0ae;
+  --accent: #f5b942;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  --radius: 12px;
+  --gap: 1rem;
+  --transition: 0.3s ease;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Base ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- Header ---------- */
+.header {
+  text-align: center;
+  padding: 3rem 1rem 1.5rem;
+}
+
+.header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.header p {
+  color: var(--muted);
+}
