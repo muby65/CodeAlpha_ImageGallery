@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A responsive photo gallery with category filters and a keyboard-friendly lightbox, built with HTML, CSS and JavaScript." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Image Gallery" />
+  <meta property="og:description" content="A responsive photo gallery with category filters and a keyboard-friendly lightbox." />
+  <meta property="og:url" content="https://muby65.github.io/CodeAlpha_ImageGallery/" />
+  <meta property="og:image" content="https://muby65.github.io/CodeAlpha_ImageGallery/images/city-1.jpg" />
+  <meta property="og:image:alt" content="City skyline at golden hour with the sun setting between tall buildings" />
   <title>Image Gallery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,44 +25,99 @@
 
   <main>
     <nav class="filters" aria-label="Filter images by category">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="nature">Nature</button>
-      <button class="filter-btn" data-filter="city">City</button>
-      <button class="filter-btn" data-filter="animals">Animals</button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="nature" aria-pressed="false">Nature</button>
+      <button class="filter-btn" data-filter="city" aria-pressed="false">City</button>
+      <button class="filter-btn" data-filter="animals" aria-pressed="false">Animals</button>
     </nav>
 
-    <section class="gallery" id="gallery">
-      <button class="gallery__item" data-category="nature">
-        <img src="images/nature-1.jpg" alt="Describe nature photo 1" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="nature">
-        <img src="images/nature-2.jpg" alt="Describe nature photo 2" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="nature">
-        <img src="images/nature-3.jpg" alt="Describe nature photo 3" width="1200" height="800" loading="lazy" />
-      </button>
+    <p class="filter-status" id="filter-status" aria-live="polite">Showing 9 of 9 photos</p>
 
-      <button class="gallery__item" data-category="city">
-        <img src="images/city-1.jpg" alt="Describe city photo 1" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="city">
-        <img src="images/city-2.jpg" alt="Describe city photo 2" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="city">
-        <img src="images/city-3.jpg" alt="Describe city photo 3" width="1200" height="800" loading="lazy" />
-      </button>
+  <section class="gallery" id="gallery">
+    <button class="gallery__item" data-category="nature" data-full="images/nature-1.jpg">
+      <img
+      src="images/thumbs/nature-1.jpg"
+      srcset="images/thumbs-sm/nature-1.jpg 480w, images/thumbs/nature-1.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Looking up through a dense forest canopy at a patch of cloudy sky"
+      width="800" height="1199" fetchpriority="high" />
+    </button>
+    <button class="gallery__item" data-category="nature" data-full="images/nature-2.jpg">
+      <img
+      src="images/thumbs/nature-2.jpg"
+      srcset="images/thumbs-sm/nature-2.jpg 480w, images/thumbs/nature-2.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Granite mountain above a pine forest, with two deer grazing in a meadow"
+      width="800" height="1321" fetchpriority="high" />
+    </button>
+    <button class="gallery__item" data-category="nature" data-full="images/nature-3.jpg">
+      <img
+      src="images/thumbs/nature-3.jpg"
+      srcset="images/thumbs-sm/nature-3.jpg 480w, images/thumbs/nature-3.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Green hills and cliffs under a glowing sunrise, with mist and a winding road"
+      width="800" height="477" />
+    </button>
 
-      <button class="gallery__item" data-category="animals">
-        <img src="images/animals-1.jpg" alt="Describe animal photo 1" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="animals">
-        <img src="images/animals-2.jpg" alt="Describe animal photo 2" width="1200" height="800" loading="lazy" />
-      </button>
-      <button class="gallery__item" data-category="animals">
-        <img src="images/animals-3.jpg" alt="Describe animal photo 3" width="1200" height="800" loading="lazy" />
-      </button>
-    </section>
+    <button class="gallery__item" data-category="city" data-full="images/city-1.jpg">
+      <img
+      src="images/thumbs/city-1.jpg"
+      srcset="images/thumbs-sm/city-1.jpg 480w, images/thumbs/city-1.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Busy city street lined with skyscrapers and yellow taxis"
+      width="800" height="533" />
+    </button>
+    <button class="gallery__item" data-category="city" data-full="images/city-2.jpg">
+      <img
+      src="images/thumbs/city-2.jpg"
+      srcset="images/thumbs-sm/city-2.jpg 480w, images/thumbs/city-2.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="City skyline at golden hour with the sun setting between tall buildings"
+      width="800" height="533" />
+    </button>
+    <button class="gallery__item" data-category="city" data-full="images/city-3.jpg">
+      <img
+      src="images/thumbs/city-3.jpg"
+      srcset="images/thumbs-sm/city-3.jpg 480w, images/thumbs/city-3.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Aerial view of a dense coastal city at dusk"
+      width="800" height="492" />
+    </button>
+
+    <button class="gallery__item" data-category="animals" data-full="images/animals-1.jpg">
+      <img
+      src="images/thumbs/animals-1.jpg"
+      srcset="images/thumbs-sm/animals-1.jpg 480w, images/thumbs/animals-1.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Close-up of a tabby kitten looking toward the camera"
+      width="800" height="1067" />
+    </button>
+    <button class="gallery__item" data-category="animals" data-full="images/animals-2.jpg">
+      <img
+      src="images/thumbs/animals-2.jpg"
+      srcset="images/thumbs-sm/animals-2.jpg 480w, images/thumbs/animals-2.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Red fox standing in tall grass, looking to the left"
+      width="800" height="1200" />
+    </button>
+    <button class="gallery__item" data-category="animals" data-full="images/animals-3.jpg">
+      <img
+      src="images/thumbs/animals-3.jpg"
+      srcset="images/thumbs-sm/animals-3.jpg 480w, images/thumbs/animals-3.jpg 800w"
+      sizes="(max-width: 900px) 50vw, 370px"
+      alt="Giant panda climbing a tree among green leaves"
+      width="800" height="1199" />
+    </button>
+  </section>
   </main>
+
+  <footer class="footer">
+   <p>
+    Photos from
+    <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+    · Built by Mubarak Muhammad Teina · CodeAlpha Frontend Internship
+   </p>
+  </footer>
 
   <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
   <button class="lightbox__close" id="lightbox-close" aria-label="Close image viewer">&times;</button>

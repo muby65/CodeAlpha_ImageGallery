@@ -79,7 +79,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .filter-btn {
@@ -251,6 +251,97 @@ body:has(.lightbox[open]) {
   color: #fff;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
+}
+
+.filter-status {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Without this, .gallery__item's display: block would defeat [hidden] */
+.gallery__item[hidden] {
+  display: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .gallery {
+    columns: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Tighter spacing on phones: every var(--gap) shrinks with it */
+  :root {
+    --gap: 0.75rem;
+  }
+
+  .header {
+    padding-top: 2.5rem;
+  }
+
+  /* Smaller pills so all four filters fit on one row */
+  .filters {
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .lightbox__img {
+    max-height: 70dvh;
+  }
+
+  /* Move the arrows below the photo so they never cover it */
+  .lightbox__nav {
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+  }
+
+  .lightbox__counter {
+    bottom: 2rem;
+  }
+}
+
+/* Touch screens: no sticky hover effects (keyboard focus still works) */
+@media (hover: none) {
+  .gallery__item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .gallery__item:hover img {
+    transform: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+/* The line sits on the <p> so it lines up with the gallery edges */
+.footer p {
+  padding-top: 1.5rem;
+  border-top: 1.5px solid var(--ink);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.footer a:hover {
+  color: var(--accent);
 }
 
 /* ---------- Respect users who prefer less motion ---------- */
